@@ -1,0 +1,12 @@
+import numpy as np
+
+def linear_interpolation(x_values, y_values, x_target):
+    return np.interp(x_target, x_values, y_values)
+
+jarak = [0, 5, 10]
+kecepatan = [10, 15, 20]
+
+jarak_target = 7.2
+kecepatan_target = linear_interpolation(jarak, kecepatan, jarak_target)
+
+print(f"Kecepatan pada jarak {jarak_target} meter adalah {kecepatan_target:.2f} m/detik")
