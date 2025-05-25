@@ -1,0 +1,33 @@
+import numpy as np
+import math
+
+x = np.array([0, 0.1, 0.2, 0.3, 0.4])
+y = np.array([0, 0.0819, 0.1341, 0.1646, 0.1797])
+h = 0.1
+
+dy_dx_0 = (y[1] - y[0]) / h
+dy_dx_02 = (y[3] - y[1]) / (2 * h)
+
+print("=== Diferensiasi ===")
+print(f"Turunan pertama di x = 0: {dy_dx_0:.4f}")
+print(f"Turunan pertama di x = 0.2: {dy_dx_02:.4f}")
+#no 1 nilai dari turunan pertama
+
+def trapezoidal_rule(f, a, b, n):
+    h = (b - a) / n
+    result = 0.5 * (f(a) + f(b))
+    for i in range(1, n):
+        result += f(a + i * h)
+    return result * h
+
+f = math.sin
+a = 0
+b = math.pi
+
+integral_8 = trapezoidal_rule(f, a, b, 8)
+integral_16 = trapezoidal_rule(f, a, b, 16)
+
+print("=== Integrasi ===")
+print(f"Integral sin(x) dari 0 ke π dengan 8 panel: {integral_8:.6f}")
+print(f"Integral sin(x) dari 0 ke π dengan 16 panel: {integral_16:.6f}")
+#no 2 nilai dari integral
